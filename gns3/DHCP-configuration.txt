@@ -1,0 +1,19 @@
+Cisco Router
+enable
+    configure terminal
+
+    ! Exclude important addresses from being handed out
+    ip dhcp excluded-address 192.168.1.1 192.168.1.10
+
+    ! Create a DHCP pool
+    ip dhcp pool My_Pool
+        network 192.168.1.0 255.255.255.0
+        default-router 192.168.1.1
+        dns-server 192.168.1.2
+        domain-name example.ac.in
+        lease 0 12 0    ! Lease time: 0 days, 12 hours, 0 minutes
+        exit
+
+
+VPCS1
+ip dhcp
